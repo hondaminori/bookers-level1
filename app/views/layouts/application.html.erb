@@ -12,7 +12,7 @@
 
   <body>
     <% flash.each do |message_type, message| %>
-      <p class="notice"><%= message %></p>
+      <p><%= message %></p>
     <% end %>
     <%= yield %>
   </body>

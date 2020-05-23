@@ -1,3 +1,5 @@
+<%= render 'form', book: @book %>
+
 <h1>Editing Book</h1>
 
 <%= form_for @book do |f| %>
@@ -13,4 +15,4 @@
   <%= f.submit 'Update Book' %>
 <% end %>
 
-<%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", books_path %>
+<%= link_to "Show", book_path(@book) %> | <%= link_to "Back", books_path %>

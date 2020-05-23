@@ -8,38 +8,28 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @books.each do |f| %>
     <tr>
       <td><%= f.title %></td>
       <td><%= f.body %></td>
-      <td>show</td>
-      <td>edit</td>
-      <td>destroy</td>
+      <td><%= link_to "show", book_path(f.id) %></td>
+      <td><%= link_to "edit", edit_book_path(f.id) %></td>
+      <td><%= link_to "destroy", book_path(f.id), method: :delete, data: { confirm: 'Are you sure ?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-
 <h2>New book</h2>
-<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ATZXyhZzla99CaVbJ6NJ7vZlRjHcmbJhKH1X2rVE/W8sI8gv/J5P4LuCZSoSOG15IgRyZxqz0n6GrtE2eFeTSA==" />
-
+<%= form_for @book do |f| %>
   <div class="field">
     <label for="book_title">Title</label>
-    <input class="book_title" type="text" name="book[title]" id="book_title" />
+    <%= f.text_field :title %>
   </div>
-
   <div class="field">
-    <label for="book_body">Body</label>
-    <textarea class="book_body" name="book[body]" id="book_body">
-</textarea>
+    <label for="book_title">Body</label>
+    <%= f.text_area :body %>
   </div>
-
-  <div class="actions">
-    <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book" />
-  </div>
-</form>
-  </body>
-</html>
+  <%= f.submit "Create Book" %>
+<% end %>
